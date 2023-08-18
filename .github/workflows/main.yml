@@ -1,0 +1,19 @@
+name: Smart Code Reviewer
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+permissions: write-all
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: AI Code Reviewer
+        uses: ravimude20/ai-code-reviewer@main
+        with:
+          exclude: "**/*.json, **/*.md" # Optional: exclude patterns separated by commas
